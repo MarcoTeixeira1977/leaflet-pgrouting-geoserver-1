@@ -1,4 +1,5 @@
-var geoserverUrl = "http://127.0.0.1:8082/geoserver";
+
+var geoserverUrl = "http://127.0.0.1:8080/geoserver";
 var selectedPoint = null;
 
 var source = null;
@@ -6,7 +7,7 @@ var target = null;
 
 // initialize our map
 var map = L.map("map", {
-	center: [-1.2836622060674874, 36.822524070739746],
+	center: [43.07443, 5.80322],
 	zoom: 16 //set the zoom level
 });
 
@@ -19,29 +20,31 @@ var OpenStreetMap = L.tileLayer(
 			'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}
 ).addTo(map);
-
 // empty geojson layer for the shortes path result
 var pathLayer = L.geoJSON(null);
 
 // draggable marker for starting point. Note the marker is initialized with an initial starting position
-var sourceMarker = L.marker([-1.283147351126288, 36.822524070739746], {
+var sourceMarker = L.marker([43.07443, 5.80322], {
 	draggable: true
 })
-	.on("dragend", function(e) {
-		selectedPoint = e.target.getLatLng();
-		getVertex(selectedPoint);
-		getRoute();
-	})
-	.addTo(map);
+.on("dragend", function(e) {
+	selectedPoint = e.target.getLatLng();
+console.log(selectedPoint);
+
+	//getVertex(selectedPoint);
+	//getRoute(); 
+})
+.addTo(map);
+
 
 // draggbale marker for destination point.Note the marker is initialized with an initial destination positon
-var targetMarker = L.marker([-1.286107765621784, 36.83449745178223], {
+var targetMarker = L.marker([43.071, 5.8128], {
 	draggable: true
 })
 	.on("dragend", function(e) {
 		selectedPoint = e.target.getLatLng();
-		getVertex(selectedPoint);
-		getRoute();
+		//getVertex(selectedPoint);
+		//getRoute();
 	})
 	.addTo(map);
 
@@ -84,6 +87,6 @@ function getRoute() {
 	});
 }
 
-getVertex(sourceMarker.getLatLng());
-getVertex(targetMarker.getLatLng());
-getRoute();
+//getVertex(sourceMarker.getLatLng());
+//getVertex(targetMarker.getLatLng());
+//getRoute();

@@ -1,28 +1,29 @@
-# Finding the shortest path in a road network with PgRouting + Geoserver + Leaflet JS
+# Trouver le chemin le plus court du réseau routier avec PgRouting + Geoserver + Leaflet JS
 
-This repository contains the accompaning code and writeup for this [Youtube tutorial series](https://www.youtube.com/watch?v=6gfdQmFkVmE&list=PLaOYwKHOUv7Z2KyZNTXhLhwYm-XeEs34H) I did on creating a routing web app with pgRouting together with Geoserver and Leaflet JS.
+Ce repo contient le code et une série de didacticiels  [Youtube ](https://www.youtube.com/watch?v=6gfdQmFkVmE&list=PLaOYwKHOUv7Z2KyZNTXhLhwYm-XeEs34H) sur la création d'une application Web de routage avec pgRouting avec Geoserver et Leaflet JS.
 
-## Requirements as used in this example:
-- PostgreSQL   - 9.5.13
-- Postgis  - 2.3.3
-- Pgrouting 2.5.2
-- Geoserver - 2.10.4
-- [Leaflet JS](https://leafletjs.com) - 1.0.3
-- OS used in this example - [OSGEO Live - Lubuntu](https://live.osgeo.org/en/index.html)
+## Ressources utilisées:
+- PostgreSQL  
+- Postgis  
+- Pgrouting
+- Geoserver
+- [Leaflet JS](https://leafletjs.com)
 
-### Step 1: Create database with the required extensions
-Create database - `here named as routing`. Replace `<user>` with your database user.
+### Step 1: Créer une database avec les extensions suivantes:
+
+Creer une base de données nommées routing avec un user
 
 `createdb routing -U <user>`
 
-Add postgis extension:
+Ajouter l'extension postgis:
 
 `psql -U <user> -c "CREATE EXTENSION postgis;"  routing`
 
-Add pgRouting extension:
+Ajouter l'extension  pgRouting:
 
 `psql -U <user> -c "CREATE EXTENSION pgrouting;"  routing`
 
+Peut aussi se faire avec pgAdmin4
 
 ### Step 2: Load network data to db using ogr2ogr/osm2psql/shapeloader etc..
 
